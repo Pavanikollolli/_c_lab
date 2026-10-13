@@ -21,6 +21,6 @@ int main()
     cout <<"square(6)= "<<square(6)<< endl;
     cout <<"circle r=2 "<<area(2,0)<< endl;
     cout <<"rectangle 4*5 "<<area(4,5)<< endl;
-    cout <<"triangle b=3h=8 "<<area(3,0,8,0)<< endl;
+    cout <<"triangle b=3h=8= "<<area(3,0,8,0)<< endl;
     return 0;
 }
