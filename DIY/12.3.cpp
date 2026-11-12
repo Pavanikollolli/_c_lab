@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    vector<int> v = {1, 2, 3, 4, 5, 6};
+    vector  < int > v = {1, 2, 3, 4, 5, 6};
 
     // Product of all elements (start at 1LL so the result is a long long)
     long long product = accumulate(v.begin(), v.end(), 1LL,
