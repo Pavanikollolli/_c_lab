@@ -1,88 +1,32 @@
 #include <iostream>
-#include <string>
+#include <string> 
 using namespace std;
-
-class BankAccount\
-{
-    private:
-    string owner;
-    double balance;
-
-    public :
-    void openAccount(string name , double initial)
-    {
-        owner = name;
-        if (initial > 0) {
-            balance = initial;
-        }
-        else {
-            balance = 0;
-        }
+class BankAccount { private:     string owner;     double balance; public:
+    void open(const string &name, double initial) {
+              owner = name;
+        balance = (initial > 0) ? initial : 0;
     }
-    void deposit (double amount)
-    {
-        if (amount>0) {
-            balance = balance + amount;
-        }
+    void deposit(double amt) {
+        if (amt > 0) balance += amt;
     }
-    bool withdraw (double amount)
-    {
-        if (amount>0 && amount<=balance) {
-            balance = balance - amount ;
+    bool withdraw(double amt) {
+        if (amt > 0 && amt <= balance) {
+            balance -= amt;
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     }
-    string getOwner()
-    {
-        return owner;
-    }
-    double getBalance()
-    {
-        return balance;
-    }
+    double getBalance() const { return balance; }
+    string getOwner() const { return owner; }
 };
-
-int main () 
-{
-    BankAccount account;
-    string name;
-    double initialDeposit;
-    double depositAmount;
-    double validWithdrawal;
-
-    cout<<"Enter account holder name:";
-    getline(cin,name);
-
-    cout<<"Enter initial deposit:";
-    cin>> initialDeposit;
-
-    account.openAccount(name,initialDeposit);
-
-    cout<<"Enter amount to deposit";
-    cin>>depositAmount;
-
-    account.deposit(depositAmount);
-
-    cout<<"\nValidWithdrawal";
-
-    if(account.withdraw(validWithdrawal)) {
-        cout<<"Withdrawal successfull"<<endl;
-    }
-    else 
-    {
-        cout<<"Withdrawal failed"<<endl;
-    }
-
-    cout<<"\n ---ACCOUNT DETAILS---"<<endl;
-
-    cout<<"Account holder:"<<account.getOwner()<<endl;
-    cout<<"Account balance:"<<account.getBalance()<<endl;
-    
-
+int main() {    
+    BankAccount a;
+    a.open("Asha", 1000);
+    a.deposit(500);
+    if (!a.withdraw(2000))
+        cout << "Withdraw denied (insufficient)\n";
+    a.withdraw(300);
+    cout << a.getOwner() << " balance = "
+         << a.getBalance() << endl;
     return 0;
-
-
 }
